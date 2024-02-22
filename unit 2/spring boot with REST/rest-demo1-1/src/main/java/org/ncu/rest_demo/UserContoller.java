@@ -43,8 +43,22 @@ public class UserContoller {
 	}
 	
 	// 4. Update Request
-	public String updateUserDetails() {
-		return null;
+	@PutMapping("/updateuser/{id}")
+	public String updateUser(@PathVariable int id, @RequestBody User updatedUser) {
+		Iterator<Person> iterator = userList.iterator();
+	    while (iterator.hasNext()) {
+	        User existingUser = iterator.next();
+	        if (existingPerson.getUserId() == id) {
+	            // Update the existing person's details
+	            existingUser.setUserName(updatedPerson.getUserName());
+	            existingUser.setUserAge(updatedPerson.getUserAge());
+	            existingUser.setUserAddress(updatedPerson.getUserAddress());
+	            // You can update other fields similarly
+
+	            return "User updated: " + existingUser;
+	        }
+	    }
+	    return "User with ID " + id + " not found";
 	}
 	
 }
