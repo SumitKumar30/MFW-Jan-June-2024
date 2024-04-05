@@ -16,4 +16,13 @@ public class MovieServiceImpl implements MovieService {
 		return "Movie save successfully!!!";
 	}
 
+	@Override
+	public String findMovieById(int movieId) {
+		Movie m = movieDao.getMovieById(movieId);
+		if(m == null)
+			return "Record not found!!!";
+		else
+			return "Record found: "+m;
+	}
+
 }

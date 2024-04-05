@@ -24,8 +24,8 @@ public class MovieDaoImpl implements MovieDao {
 	@Override
 	@Transactional
 	public Movie getMovieById(int movieId) {
-		entityManager.find(Movie.class, movieId);
-		return null;
+		return entityManager.find(Movie.class, movieId);
+//		return null;
 	}
 
 	@Override

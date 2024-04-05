@@ -3,6 +3,8 @@ package org.ncu.movie_app_v1.controller;
 import org.ncu.movie_app_v1.entity.Movie;
 import org.ncu.movie_app_v1.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,5 +19,10 @@ public class MovieController {
 	@PostMapping("/save")
 	public String saveMovieData(@RequestBody Movie movie) {
 		return movieService.createMovie(movie);
+	}
+	
+	@GetMapping("/movie/{id}")
+	public String getMovie(@PathVariable int id) {
+		return movieService.findMovieById(id);
 	}
 }
